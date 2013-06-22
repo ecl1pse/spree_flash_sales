@@ -4,7 +4,7 @@ class CreateFlashSales < ActiveRecord::Migration
       t.string :name
       t.datetime :start_date
       t.datetime :end_date
-      t.boolean :active, default: false
+      t.boolean :active
       t.string :permalink
       t.belongs_to :saleable, polymorphic: true
 
