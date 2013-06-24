@@ -4,8 +4,6 @@ class Spree::FlashSale < ActiveRecord::Base
   validates :name, presence: true
   validates :end_date, presence: true
   validates :start_date, presence: true
-  validates :active, presence: true
-
 
   attr_accessible :active, :end_date, :name, :permalink, :start_date, :saleable_id, :saleable_type
 
@@ -18,5 +16,13 @@ class Spree::FlashSale < ActiveRecord::Base
 
   def to_param
     "#{id}-#{name.parameterize}"
+  end
+
+  def taxon?
+    self.saleable_type == "Spree::Taxon"
+  end
+
+  def product?
+    self.saleable_type == "Spree::Product"
   end
 end

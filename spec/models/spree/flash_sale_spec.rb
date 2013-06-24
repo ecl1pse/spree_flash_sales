@@ -7,7 +7,6 @@ describe Spree::FlashSale do
   it { should validate_presence_of :name }
   it { should validate_presence_of :start_date }
   it { should validate_presence_of :end_date }
-  it { should validate_presence_of :active }
 
   describe "FlashSale::live" do
     before do
@@ -72,6 +71,22 @@ describe Spree::FlashSale do
       Spree::FlashSale.find(flash_sale).should == flash_sale
     end
 
+  end
+
+  describe "#taxon?" do
+    let(:flash_sale) { create(:flash_sale) }
+    subject { flash_sale }
+
+    its(:taxon?) { should == true }
+    its(:product?) { should == false }
+  end
+
+  describe "#product?" do
+    let(:flash_sale) { create(:flash_sale_for_product) }
+    subject { flash_sale }
+
+    its(:taxon?) { should == false }
+    its(:product?) { should == true }
   end
 
   describe "adding an image" do

@@ -1,6 +1,12 @@
 <div class='flash-sale' id="flash_sale_<%= flash_sale.id %>">
   <h1 class='flash-sale-name'>
-    <%= link_to flash_sale.name, flash_sale %>
+    <%- if flash_sale.product? %>
+      <%= link_to flash_sale.name, flash_sale.saleable %>
+    <%- elsif flash_sale.taxon? %>
+      <%= link_to flash_sale.name, flash_sale %>
+    <% else %>
+        This shouldn't be happening.
+    <% end %>
   </h1>
   Ends in: <span class='flash-sale-countdown' data-countdown="<%= flash_sale.end_date.strftime('%B %-d, %Y %H:%M:%S') %>" data-layout="{dn} DAYS {hnn}{sep}{mnn}{sep}{snn}"></span>
 </div>

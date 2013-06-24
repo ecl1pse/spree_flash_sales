@@ -1,0 +1,11 @@
+<div class='flash-sale'>
+  <h1 class='flash-sale-name'>
+    <%= @flash_sale.name %>
+  </h1>
+  <%- @flash_sale.saleable.products.each do |product| %>
+    <%= product.name %>
+  <% end %>
+  <%- if @flash_sale.saleable.products.blank? %>
+    There doesn't seem to be any products available for this sale anymore...
+  <% end %>
+</div>
