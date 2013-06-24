@@ -18,8 +18,9 @@ feature "Home" do
 end
 
 feature "home: don't list inactive flash sales" do
+  given!(:inactive_flash_sale) { create(:inactive_flash_sale) }
+
   scenario "does not list inactive flash sales" do
-    inactive_flash_sale = create(:inactive_flash_sale)
     inactive_flash_sale
     visit spree.root_path
     expect(page).to_not have_content(inactive_flash_sale.name)
@@ -27,8 +28,9 @@ feature "home: don't list inactive flash sales" do
 end
 
 feature 'home: flash sale for product' do
+  given!(:flash_sale) { create(:flash_sale_for_product) }
+
   scenario "clicking flash sale" do
-    flash_sale = create(:flash_sale_for_product)
     visit spree.root_path
     find_link(flash_sale.name).click
     current_path.should == spree.product_path(flash_sale.saleable) # should go to the product directly
@@ -36,8 +38,9 @@ feature 'home: flash sale for product' do
 end
 
 feature 'home: flash sale for taxon' do
+  given!(:flash_sale) { create(:flash_sale) }
+
   scenario "takes you to flash sale page" do
-    flash_sale = create(:flash_sale)
     visit spree.root_path
     find_link(flash_sale.name).click
     current_path.should == spree.flash_sale_path(flash_sale)
@@ -45,8 +48,9 @@ feature 'home: flash sale for taxon' do
 end
 
 feature 'home: showing time left on a flash sale' do
+  given!(:flash_sale) { create(:flash_sale) }
+
   scenario "shows time left" do
-    flash_sale = create(:flash_sale, end_date: 3.hours.from_now)
     visit spree.root_path
     find("#flash_sale_#{flash_sale.id}").should have_css(".flash-sale-countdown")
   end
