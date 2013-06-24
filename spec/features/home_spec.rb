@@ -2,9 +2,6 @@ require 'spec_helper'
 
 feature "Home" do
   background do
-    # 3.times do
-    #   create(:flash_sale)
-    # end
     create_list(:flash_sale, 3)
 
     visit spree.root_path
@@ -34,11 +31,20 @@ feature "Home" do
   end
 
   context "clicking a flash sale for a taxon" do
-    let(:taxon_sale) { create(:flash_sale) }
+    let(:taxon_sale) { Spree::FlashSale.first }
 
     scenario "takes you to flash sale page" do
       find_link(taxon_sale.name).click
       current_path.should == spree.flash_sale_path(taxon_sale)
     end
+  end
+
+end
+
+feature 'home: showing time left on a flash sale' do
+  scenario "shows time left" do
+    flash_sale = create(:flash_sale, end_date: 3.hours.from_now)
+    visit spree.root_path
+    find("#flash_sale_#{flash_sale.id}").should have_css(".flash-sale-countdown")
   end
 end

@@ -1,0 +1,28 @@
+/*
+ *= require store/spree_frontend
+*/
+
+@mixin clearfix {
+  &:after {
+    clear: both;
+    content: ".";
+    display: block;
+    height: 0;
+    visibility: hidden;
+  }
+  zoom: 1;
+}
+
+.flash-sale-countdown {
+  .countdown_row {
+    @include clearfix;
+  }
+
+  .countdown_section {
+    float: left;
+    margin-right: 10px;
+  }
+
+  .countdown_amount {
+  }
+}
