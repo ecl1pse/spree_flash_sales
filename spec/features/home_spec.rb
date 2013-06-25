@@ -7,12 +7,18 @@ feature "Home" do
     visit spree.root_path
   end
 
-  scenario "displays a notice if there's no active flash sales" do
-    expect(page).to have_content "There are no active sales at the moment. Check back soon!"
-  end
 
   scenario "shows a list of live flash sales" do
-    expect(page).to have_css(".flash_sale", count: 3)
+    expect(page).to have_css(".flash-sale", count: 3)
+  end
+
+end
+
+feature "display a notice if there's no active flash sales" do
+
+  scenario "displays a notice if there's no active flash sales" do
+    visit spree.root_path
+    expect(page).to have_content "There are no active sales at the moment. Check back soon!"
   end
 
 end
