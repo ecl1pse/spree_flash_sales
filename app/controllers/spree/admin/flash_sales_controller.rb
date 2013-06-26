@@ -1,22 +1,8 @@
 class Spree::Admin::FlashSalesController < Spree::Admin::ResourceController
-  def show
-    respond_with(@collection) do |format|
-      format.html
-    end
-  end
-
   def index
     respond_with(@collection) do |format|
       format.html
     end
-  end
-
-  def update
-    respond_with(@object) do |format|
-      flash[:notice] = "Updated Flash Sale"
-      format.html { redirect_to edit_object_url(@object) }
-    end
-    
   end
 
   def update
