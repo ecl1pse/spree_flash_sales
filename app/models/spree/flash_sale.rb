@@ -5,7 +5,7 @@ class Spree::FlashSale < ActiveRecord::Base
   validates :end_date, presence: true
   validates :start_date, presence: true
 
-  attr_accessible :active, :end_date, :name, :permalink, :start_date, :saleable_id, :saleable_type
+  attr_accessible :active, :end_date, :name, :permalink, :start_date, :saleable_id, :saleable_type, :saleable_name
 
   scope :live, lambda { where("start_date <= :start_date AND end_date >= :end_date AND active = :active ", {start_date: DateTime.now.in_time_zone, end_date: DateTime.now.in_time_zone, active: true}) }
 
@@ -24,5 +24,13 @@ class Spree::FlashSale < ActiveRecord::Base
 
   def product?
     self.saleable_type == "Spree::Product"
+  end
+
+  def saleable_name
+    saleable.try(:name)
+  end
+
+  def saleable_name=(name)
+    self.saleable = self.saleable_type.constantize.find_by_name(name) if name.present?
   end
 end

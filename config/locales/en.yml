@@ -3,3 +3,26 @@
 
 en:
   hello: "Hello world"
+  spree:
+    flash_sale:
+      saleable_hint: "Will this be a sale for an individual product or many based on a taxon?"
+      saleable_name_hint: "Enter the name of product or taxon this sale will include."
+      link:
+        new: "New Flash Sale"
+      title:
+        list: 'Listing Flash Sales'
+      active_record:
+        end_date: "End Date"
+        saleable_name: "Name?"
+        saleable_type: "Product or Taxon?"
+      datetimepicker:
+        format: ! '%Y/%m/%d %H:%M:%S %z'
+        js_format: 'HH:mm:ss z'
+        js_date_format: 'yy/mm/dd'
+        time_only_title: 'Time only'
+        time_text: 'Time'
+        hour_text: 'Hour'
+        minute_text: 'Minute'
+        second_text: 'Second'
+        current_text: 'Current'
+        close_text: 'Close'

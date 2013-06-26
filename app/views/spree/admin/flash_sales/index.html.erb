@@ -1,0 +1,53 @@
+<% content_for :page_title do %>
+  <%= Spree.t('flash_sale.title.list') %>
+<% end %>
+
+<% content_for :page_actions do %>
+  <li>
+    <%= button_link_to Spree.t('flash_sale.link.new'), new_object_url, :icon => 'icon-plus', :id => 'admin_new_flash_sale_link' %>
+  </li>
+<% end %>
+
+<table class="index" id="listing_flash_sales" data-hook>
+  <colgroup>
+    <col style="width: 85%">
+    <col style="width: 15%">
+  </colgroup>
+  <thead>
+    <tr data-hook="admin_flash_sales_index_headers">
+      <th><%= sort_link @search, :email, Spree.t(:flash_sale), {}, {:title => 'flash_sales_name'} %></th>
+      <th data-hook="admin_flash_sales_header_actions" class="actions"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @flash_sales.each do |flash_sale|%>
+      <tr id="<%= spree_dom_id flash_sale %>" data-hook="admin_flash_sales_index_rows" class="<%= cycle('odd', 'even')%> flash-sale">
+        <td class='flash_sale_name'><%=link_to flash_sale.name, edit_object_url(flash_sale) %></td>
+        <td data-hook="admin_flash_sales_index_row_actions" class="actions">
+          <%= link_to_edit flash_sale, :no_text => true %>
+          <%= link_to_delete flash_sale, :no_text => true %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= paginate @flash_sales %>
+
+<% content_for :sidebar_title do %>
+  <%= Spree.t(:search) %>
+<% end %>
+
+<% content_for :sidebar do %>
+  <div class="box align-center" data-hook="admin_flash_sales_index_search">
+    <%= search_form_for [:admin, @search] do |f| %>
+      <div class="field">
+        <%= f.label Spree.t(:name) %> <br>
+        <%= f.text_field :name_cont, :class => 'fullwidth' %>
+      </div>
+      <div data-hook="admin_users_index_search_buttons">
+        <%= button Spree.t(:search), 'icon-search' %>
+      </div>
+    <% end %>
+  </div>
+<% end %>

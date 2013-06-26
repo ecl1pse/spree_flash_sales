@@ -38,4 +38,16 @@ FactoryGirl.define do
     factory :inactive_flash_sale, :traits => [:inactive]
     factory :flash_sale_for_product, :traits => [:product_as_saleable]
   end
+
+  factory :new_user, class: Spree::User do
+    email { generate(:random_email) }
+    login { email }
+    password 'secret'
+    password_confirmation { password }
+    authentication_token { generate(:user_authentication_token) } if Spree.user_class.attribute_method? :authentication_token
+
+    factory :new_admin_user do
+      spree_roles { [Spree::Role.find_by_name('admin') || create(:role, name: 'admin')] }
+    end
+  end
 end

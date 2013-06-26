@@ -1,0 +1,17 @@
+<% content_for :page_title do %>
+  <%= @flash_sale.name %>
+<% end %>
+
+<% content_for :page_actions do %>
+  <li>
+    <%= button_link_to 'wtf', [:admin, @flash_sale], :icon => 'icon-arrow-left', :id => 'admin_new_flash_sale__link' %>
+  </li>
+<% end %>
+
+<div data-hook="admin_flash_sale__edit_form">
+  <div id="flash-sale-form-wrapper">
+    <%= form_for [:admin, @flash_sale], :html => { :id => 'admin_flash_sale', :multipart => true } do |form| %>
+      <%= render partial: 'form', locals: { form: form } %>
+    <% end %>
+  </div>
+</div>

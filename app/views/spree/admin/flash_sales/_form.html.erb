@@ -1,0 +1,74 @@
+<fieldset data-hook="admin_flash_sale_form_fields">
+  <div class="left eight columns alpha" data-hook="admin_flash_sale_form_left">
+    <%= form.field_container :name do %>
+      <%= form.label :name, raw('Name' + content_tag(:span, ' *', :class => 'required')) %>
+      <%= form.text_field :name, :class => 'fullwidth' %>
+      <%= form.error_message_on :name %>
+    <% end %>
+  </div>
+  <div class="right eight columns omega" data-hook="admin_flash_sale_event_form_right">
+    <div class="row">
+      <div class="alpha four columns">
+        <%= form.field_container :start_date do %>
+          <%= form.label :start_date, 'Start Date' %>
+          <%= form.error_message_on :start_date %>
+          <% if @flash_sale.start_date? %>
+            <% start_date = l(@flash_sale.start_date, :format => Spree.t('flash_sale.datetimepicker.format')) %>
+          <% else %>
+            <% start_date = l(Time.zone.now, :format => Spree.t('flash_sale.datetimepicker.format')) %>
+          <% end %>
+          <%= form.text_field :start_date, :value => start_date, :class => 'timepicker' %>
+        <% end %>
+      </div>
+
+      <div class="omega four columns">
+        <%= form.field_container :end_date do %>
+          <%= form.label :end_date, Spree.t('flash_sale.active_record.end_date') %>
+          <%= form.error_message_on :end_date %>
+          <% end_date = l((@flash_sale.end_date? ? @flash_sale.end_date : Time.zone.now+1.day), :format => Spree.t('flash_sale.datetimepicker.format')) %>
+          <%= form.text_field :end_date, :value => end_date, :class => 'timepicker' %>
+        <% end %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="alpha four columns">
+        <%= form.label :saleable, Spree.t('flash_sale.active_record.saleable_type') %>
+        <p class='hint'><%= Spree.t('flash_sale.saleable_hint') %></p>
+        <%= form.select :saleable_type, [["Product","Spree::Product"], ["Taxon","Spree::Taxon"]], { :include_blank => false }, { :class => 'select2' } %>
+        <%= form.error_message_on :saleable %>
+      </div>
+
+      <div class="omega four columns">
+        <%= form.label :saleable_name, Spree.t('flash_sale.active_record.saleable_name') %>
+        <p class='hint'><%= Spree.t('flash_sale.saleable_name_hint') %></p>
+        <%= form.error_message_on :saleable_name %>
+        <%= form.text_field :saleable_name, :class => 'autocomplete', :data => { :auto_complete_url => saleables_admin_flash_sales_url } %>
+      </div>
+    </div>
+  </div>
+  <p class="form-buttons" data-hook="admin_flash_sale_form_buttons">
+    <% if @flash_sale.new_record? %>
+      <%= render :partial => 'spree/admin/shared/new_resource_links' %>
+    <% else %>
+      <%= render :partial => 'spree/admin/shared/edit_resource_links' %>
+    <% end %>
+  </p>
+</fieldset>
+
+
+<%= javascript_tag do -%>
+  var properties = "<%= raw(@properties.to_json) %>";
+
+  $("#flash_sale_saleable_name").on("keydown", function(){
+    var saleable_type = $('#flash_sale_saleable_type :selected').val();
+    var saleable_name = $('#flash_sale_saleable_name').val();
+    var url = $(this).data('auto-complete-url')
+    already_auto_completed = $(this).is('ac_input');
+    if (!already_auto_completed) {
+      $(this).autocomplete({
+        source: url+"?saleable_type="+saleable_type+"&name="+saleable_name
+      });
+      $(this).focus();
+    }
+  });
+<% end -%>

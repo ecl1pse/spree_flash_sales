@@ -1,0 +1,15 @@
+<% content_for :page_title do %>
+  <%= @object.name %>
+<% end %>
+
+<% content_for :page_actions do %>
+  <li>
+    <%= button_link_to 'edit', [:edit, :admin, @object], :icon => 'icon-arrow-left' %>
+  </li>
+<% end %>
+
+<div data-hook="admin_flash_sale_edit_form">
+  <%= form_for [:admin, @flash_sale], html: { id: 'flash_sale', multipart: true } do |form| %>
+    <%= render partial: 'form', locals: { form: form } %>
+  <% end %>
+</div>
