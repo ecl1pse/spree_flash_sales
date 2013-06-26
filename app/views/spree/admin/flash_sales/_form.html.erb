@@ -1,10 +1,19 @@
 <fieldset data-hook="admin_flash_sale_form_fields">
   <div class="left eight columns alpha" data-hook="admin_flash_sale_form_left">
-    <%= form.field_container :name do %>
-      <%= form.label :name, raw('Name' + content_tag(:span, ' *', :class => 'required')) %>
-      <%= form.text_field :name, :class => 'fullwidth' %>
-      <%= form.error_message_on :name %>
-    <% end %>
+    <div class='row'>
+      <%= form.field_container :name do %>
+        <%= form.label :name, raw('Name' + content_tag(:span, ' *', :class => 'required')) %>
+        <%= form.text_field :name, :class => 'fullwidth' %>
+        <%= form.error_message_on :name %>
+      <% end %>
+    </div>
+    <div class='row'>
+      <%= form.field_container :active do %>
+        <%= form.label :active, raw('Active' + content_tag(:span, ' *', :class => 'required')) %>
+        <%= form.check_box :active %>
+        <%= form.error_message_on :active %>
+      <% end %>
+    </div>
   </div>
   <div class="right eight columns omega" data-hook="admin_flash_sale_event_form_right">
     <div class="row">

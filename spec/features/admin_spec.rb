@@ -48,15 +48,23 @@ feature 'Admin' do
     end
 
     scenario "start date" do
-      fill_in "flash_sale_start_date", with: 1.day.ago.in_time_zone
+      date = 1.day.ago.in_time_zone
+      fill_in "flash_sale_start_date", with: date
       click_button 'Update'
-      find_field("flash_sale_start_date").value.should == 1.day.ago.in_time_zone.strftime(formatted_expectation)
+      find_field("flash_sale_start_date").value.should == date.strftime(formatted_expectation)
     end
 
     scenario "end date" do
-      fill_in "flash_sale_end_date", with: 3.days.from_now.in_time_zone
+      date = 3.days.from_now.in_time_zone
+      fill_in "flash_sale_end_date", with: date
       click_button 'Update'
-      find_field("flash_sale_end_date").value.should == 3.days.from_now.in_time_zone.strftime(formatted_expectation)
+      find_field("flash_sale_end_date").value.should == date.strftime(formatted_expectation)
+    end
+
+    scenario "active" do
+      check('Active')
+      click_button 'Update'
+      find_field("Active").value.should == "1"
     end
 
     scenario 'saleable' do
