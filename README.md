@@ -4,13 +4,13 @@ SpreeFlashSales
 [![Code Climate](https://codeclimate.com/github/ecl1pse/spree_flash_sales.png)](https://codeclimate.com/github/ecl1pse/spree_flash_sales)
 [![Dependency Status](https://gemnasium.com/ecl1pse/spree_flash_sales.png)](https://gemnasium.com/ecl1pse/spree_flash_sales)
 [![Coverage Status](https://coveralls.io/repos/ecl1pse/spree_flash_sales/badge.png)](https://coveralls.io/r/ecl1pse/spree_flash_sales)
+[![Coverage Status](https://coveralls.io/repos/ecl1pse/spree_flash_sales/badge.png?branch=master)](https://coveralls.io/r/ecl1pse/spree_flash_sales?branch=master)
+[![Coverage Status](https://coveralls.io/repos/ecl1pse/spree_flash_sales/badge.png?branch=master)](https://coveralls.io/r/ecl1pse/spree_flash_sales?branch=master)
 [![Build Status](https://travis-ci.org/ecl1pse/spree_flash_sales.png?branch=master)](https://travis-ci.org/ecl1pse/spree_flash_sales)
 
 Adds "flash sale" functionality to Spree engine. Tested with Spree 4+. 
 
-Todo: 
-
-Add images.
+Check the specs for how it works.
 
 Installation
 ------------
@@ -59,5 +59,10 @@ Simply add this require statement to your spec_helper:
 ```ruby
 require 'spree_flash_sales/factories'
 ```
+
+Special Thanks
+--------------
+
+https://github.com/suryart/spree_active_sale for inspiration and example code.
 
 Copyright (c) 2013 [ecl1pse], released under the New BSD License
