@@ -25,6 +25,9 @@ FactoryGirl.define do
     saleable { generate(:saleable_product) }
   end
 
+  factory :taxon_with_products do 
+    generate(:saleable_taxon)
+  end
 
   factory :flash_sale, class: Spree::FlashSale do
     ## By default associate a flash sale with a taxon.

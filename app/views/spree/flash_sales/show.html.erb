@@ -3,13 +3,9 @@
     <%= @flash_sale.name %>
   </h1>
   <div class='flash-sale-products'>
-    <%- @flash_sale.saleable.products.each do |product| %>
-      <div class='flash-sale-product'>
-        <%= link_to product.name, spree.product_path(product) %>
-      </div>
-    <% end %>
+    <%= render :partial => 'spree/shared/products', :locals => { :products => @products } %>
   </div>
-  <%- if @flash_sale.saleable.products.blank? %>
+  <%- if @products.blank? %>
     <p class='notice'>There doesn't seem to be any products available for this sale anymore...</p>
   <% end %>
 </div>
