@@ -11,7 +11,6 @@ feature "Home" do
   scenario "shows a list of live flash sales" do
     expect(page).to have_css(".flash-sale", count: 3)
   end
-
 end
 
 feature "display a notice if there's no active flash sales" do

@@ -86,5 +86,34 @@ feature 'Admin' do
       end
     end
   end
-  
+end
+
+feature "Flash Sale Images" do
+  stub_authorization!
+  given!(:flash_sale) { create(:flash_sale) }
+
+  let(:file_path) { Rails.root + "../../spec/support/ror_ringer.jpeg" }
+
+  before do
+    # Ensure attachment style keys are symbolized before running all tests
+    # Otherwise this would result in this error:
+    # undefined method `processors' for \"48x48>\
+    Spree::Image.attachment_definitions[:attachment][:styles].symbolize_keys!
+  end
+
+  context "uploading and editing an image" do
+    it "should allow an admin to upload and edit an image for a product" do
+      Spree::Image.attachment_definitions[:attachment].delete :storage
+
+      create(:product)
+
+      visit spree.admin_path
+      click_link "Flash Sales"
+      click_link flash_sale.name
+      attach_file('flash_sale_attachment', file_path)
+      click_button "Update"
+      expect(page).to have_content("successfully updated!")
+      expect(page).to have_css(".flash-sale-image")
+    end
+  end
 end

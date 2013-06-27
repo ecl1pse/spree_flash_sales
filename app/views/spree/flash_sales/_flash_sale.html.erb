@@ -1,8 +1,14 @@
 <div class='flash-sale' id="flash_sale_<%= flash_sale.id %>">
   <h1 class='flash-sale-name'>
     <%- if flash_sale.product? %>
+      <% if flash_sale.image.present? %>
+        <%= link_to image_tag(flash_sale.image.attachment.url(:product), class: 'flash-sale-image'), flash_sale.saleable %>
+      <% end %>
       <%= link_to flash_sale.name, flash_sale.saleable %>
     <%- elsif flash_sale.taxon? %>
+      <% if flash_sale.image.present? %>
+        <%= link_to image_tag(flash_sale.image.attachment.url(:product), class: 'flash-sale-image'), flash_sale %>
+      <% end %>
       <%= link_to flash_sale.name, flash_sale %>
     <% else %>
         This shouldn't be happening.

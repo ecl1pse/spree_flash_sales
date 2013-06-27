@@ -89,7 +89,19 @@ describe Spree::FlashSale do
     its(:product?) { should == true }
   end
 
-  describe "adding an image" do
-    pending "need the ability to add an image"
-  end
+  # describe "adding an image" do
+  #   pending "need the ability to add an image"
+  # end
+
+  # context "#attachment=" do
+  #   let(:flash_sale) { create(:flash_sale) }
+  #   let(:image) { File.open(File.expand_path('../../../fixtures/thinking-cat.jpg', __FILE__)) }
+  #   let(:params) { {:viewable_id => flash_sale.id, :viewable_type => 'Spree::FlashSale', :attachment => image} }
+
+  #   it "creates and associates the image" do
+  #     flash_sale.attachment= image
+  #     flash_sale.save
+  #     flash_sale.image.viewable_id.should == flash_sale.id
+  #   end
+  # end
 end
