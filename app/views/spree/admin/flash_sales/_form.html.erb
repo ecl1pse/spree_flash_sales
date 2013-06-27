@@ -20,7 +20,11 @@
       <% end %>
       <%= form.field_container :image do %>
           <%= form.label :image, Spree.t(:upload_image) %><br>
-          <%= form.file_field :attachment %>
+          <% if @flash_sale.new_record? %>
+            <p class='hint'>After you create the flash sale you can upload an image.</p>
+          <% else %>
+            <%= form.file_field :attachment %>
+          <% end %>
       <% end %>
     </div>
   </div>
