@@ -17,6 +17,7 @@ Gem::Specification.new do |s|
   s.requirements << 'none'
 
   s.add_dependency 'spree_core', '~> 2.0.3'
+  s.add_dependency 'draper', '~> 1.2.1'
 
   s.add_development_dependency 'capybara', '~> 2.1'
   s.add_development_dependency 'coffee-rails'
@@ -33,4 +34,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'guard-rspec'
   s.add_development_dependency 'rb-fsevent'
   s.add_development_dependency 'launchy'
+  s.add_development_dependency 'guard-zeus'
 end

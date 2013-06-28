@@ -1,17 +1,7 @@
 <article class='flash-sale' id="flash_sale_<%= flash_sale.id %>" data-hook="flash-sale" itemscope itemtype='http://schema.org/Offer'>
-  <% if flash_sale.image.present? %>
-    <% if flash_sale.product? %>
-      <%= link_to image_tag(flash_sale.image.attachment.url(:product), class: 'flash-sale-image'), flash_sale.saleable, itemprop: 'url' %>
-    <% else %>
-      <%= link_to image_tag(flash_sale.image.attachment.url(:product), class: 'flash-sale-image'), flash_sale, itemprop: 'url' %>
-    <% end %>
-  <% end %>
+  <%= flash_sale.render_image %>
   <h1 class='flash-sale-name'>
-    <% if flash_sale.product? %>
-      <%= link_to flash_sale.name, flash_sale.saleable, itemprop: 'name', title: flash_sale.name %>
-    <% else %>
-      <%= link_to flash_sale.name, flash_sale, itemprop: 'name', title: flash_sale.name %>
-    <% end %>
+    <%= link_to flash_sale.name, flash_sale.render_url, itemprop: 'name', title: flash_sale.name %>
   </h1>
   <div class='flash-sale-expires'>
     Ends in: <span class='flash-sale-countdown' data-countdown="<%= flash_sale.end_date.strftime('%B %-d, %Y %H:%M:%S') %>" data-layout="{dn} DAYS {hnn}{sep}{mnn}{sep}{snn}"></span>

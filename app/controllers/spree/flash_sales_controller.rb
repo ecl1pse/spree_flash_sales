@@ -1,4 +1,5 @@
 class Spree::FlashSalesController < Spree::StoreController
+  decorates_assigned :flash_sale
 
   respond_to :html
 

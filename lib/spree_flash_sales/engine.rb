@@ -1,6 +1,7 @@
 module SpreeFlashSales
   class Engine < Rails::Engine
     require 'spree/core'
+    require 'draper'
     isolate_namespace Spree
     engine_name 'spree_flash_sales'
 
