@@ -1,4 +1,6 @@
+<% flash_sale.decorate %>
 <article class='flash-sale' id="flash_sale_<%= flash_sale.id %>" data-hook="flash-sale" itemscope itemtype='http://schema.org/Offer'>
+  <%= flash_sale.hey_there %>
   <% if flash_sale.image.present? %>
     <% if flash_sale.product? %>
       <%= link_to image_tag(flash_sale.image.attachment.url(:product), class: 'flash-sale-image'), flash_sale.saleable, itemprop: 'url' %>
