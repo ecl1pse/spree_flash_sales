@@ -1,11 +1,14 @@
-<div class='flash-sale-page'>
+<article class='flash-sale-page'>
   <h1 class='flash-sale-name'>
     <%= @flash_sale.name %>
   </h1>
+  <div class='flash-sale-expires'>
+    Ends in: <span class='flash-sale-countdown' data-countdown="<%= flash_sale.countdown_format %>" data-layout="<%= flash_sale.countdown_layout %>"></span>
+  </div>
   <div class='flash-sale-products'>
     <%= render :partial => 'spree/shared/products', :locals => { :products => @products } %>
   </div>
   <%- if @products.blank? %>
     <p class='notice'>There doesn't seem to be any products available for this sale anymore...</p>
   <% end %>
-</div>
+</article>
