@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 feature "Home" do
+  given!(:flash_sale) { create(:flash_sale) }
   background do
     create_list(:flash_sale, 3)
 
@@ -9,7 +10,19 @@ feature "Home" do
 
 
   scenario "shows a list of live flash sales" do
-    expect(page).to have_css(".flash-sale", count: 3)
+    expect(page).to have_css(".flash-sale", count: 4)
+  end
+
+  scenario "has a data-countdown attribute" do
+    within("//[@id='flash_sale_#{flash_sale.id}']") do
+      find("span.flash-sale-countdown")['data-countdown'].should_not be_empty
+    end
+  end
+
+  scenario "has a data-layout attribute" do
+    within("//[@id='flash_sale_#{flash_sale.id}']") do
+      find("span.flash-sale-countdown")['data-layout'].should == Spree.t("flash_sale.datetimepicker.template")
+    end
   end
 end
 

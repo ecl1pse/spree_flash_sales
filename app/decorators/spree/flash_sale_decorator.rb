@@ -1,6 +1,14 @@
 class Spree::FlashSaleDecorator < Draper::Decorator
   delegate_all
 
+  def countdown_format
+    object.end_date.strftime(Spree.t("flash_sale.datetimepicker.strftime_format"))
+  end
+
+  def countdown_layout
+    "{dn} DAYS {hnn}{sep}{mnn}{sep}{snn}"
+  end
+
   def render_url
     if object.product?
       h.spree.product_path(object.saleable)

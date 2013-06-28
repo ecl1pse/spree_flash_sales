@@ -27,3 +27,5 @@ en:
         second_text: 'Second'
         current_text: 'Current'
         close_text: 'Close'
+        template: '{dn} DAYS {hnn}{sep}{mnn}{sep}{snn}'
+        strftime_format: '%B %-d, %Y %H:%M:%S'

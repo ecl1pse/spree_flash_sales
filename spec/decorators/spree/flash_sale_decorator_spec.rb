@@ -4,6 +4,18 @@ describe Spree::FlashSaleDecorator do
   let(:flash_sale) { build_stubbed(:flash_sale_for_product) }
   let(:decorator) { Spree::FlashSaleDecorator.new(flash_sale) }
 
+  describe "#countdown_format" do
+    it "returns a date formatted for countdown js library" do
+      decorator.countdown_format.should == flash_sale.end_date.strftime(Spree.t("flash_sale.datetimepicker.strftime_format"))
+    end
+  end
+
+  describe "#countdown_layout" do
+    it "returns a string with placeholders for countdown js library" do
+      decorator.countdown_layout.should == Spree.t("flash_sale.datetimepicker.template")
+    end
+  end
+
   describe "#render_url" do
     context "as a product flash sale" do
       let(:flash_sale) { build_stubbed(:flash_sale_for_product) }
