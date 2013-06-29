@@ -7,6 +7,8 @@ describe Spree::FlashSale do
   it { should validate_presence_of :name }
   it { should validate_presence_of :start_date }
   it { should validate_presence_of :end_date }
+  it { should validate_presence_of :saleable_id }
+  it { should validate_presence_of :saleable_type }
 
   describe "FlashSale::live" do
     before do

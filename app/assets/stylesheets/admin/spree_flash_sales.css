@@ -1,3 +1,7 @@
 /*
  *= require admin/spree_backend
 */
+
+.formError {
+  color: red;
+}
