@@ -64,7 +64,7 @@
         <%= form.label :saleable_name, Spree.t('flash_sale.active_record.saleable_name') %>
         <p class='hint'><%= Spree.t('flash_sale.saleable_name_hint') %></p>
         <%= form.error_message_on :saleable_id %>
-        <%= form.text_field :saleable_name, :class => 'autocomplete', :data => { :auto_complete_url => saleables_admin_flash_sales_url } %>
+        <%= form.text_field :saleable_name, :class => 'autocomplete', :data => { :auto_complete_url => saleables_admin_flash_sales_url }, :autocomplete => "off" %>
       </div>
     </div>
   </div>
