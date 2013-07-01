@@ -11,7 +11,7 @@
 
 # Configure Rails Environment
 require 'coveralls'
-Coveralls.wear!
+Coveralls.wear!("rails")
 
 ENV['RAILS_ENV'] = 'test'
 
