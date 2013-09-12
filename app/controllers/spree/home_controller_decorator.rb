@@ -3,7 +3,7 @@ module Spree
     decorates_assigned :flash_sales # exposes flash_sales in view as helper method
 
     def index
-      @flash_sales = Spree::FlashSale.live
+      @flash_sales = Spree::FlashSale.live.order("position")
 
       respond_with(@flash_sales)
     end

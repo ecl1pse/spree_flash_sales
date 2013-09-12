@@ -1,13 +1,13 @@
 require 'spec_helper'
 
 feature "Home" do
-  given!(:flash_sale) { create(:flash_sale) }
+  given!(:flash_sale) { create(:flash_sale, position: 3) }
+
   background do
     create_list(:flash_sale, 3)
 
     visit spree.root_path
   end
-
 
   scenario "shows a list of live flash sales" do
     expect(page).to have_css(".flash-sale", count: 4)
@@ -23,6 +23,10 @@ feature "Home" do
     within("//[@id='flash_sale_#{flash_sale.id}']") do
       find("span.flash-sale-countdown")['data-layout'].should == Spree.t("flash_sale.datetimepicker.template")
     end
+  end
+
+  scenario "sorted" do
+    expect(page).to have_css("article.flash-sale:last-child .flash-sale-name", text: flash_sale.name )
   end
 end
 

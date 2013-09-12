@@ -74,6 +74,12 @@ feature 'Admin' do
       find_field("flash_sale_saleable_name").value.should == product.name
     end
 
+    scenario "position" do
+      fill_in "flash_sale_position", with: 3
+      click_button 'Update'
+      find_field("flash_sale_position").value.should == "3"
+    end
+
   end
 
   context "searching flash sales" do

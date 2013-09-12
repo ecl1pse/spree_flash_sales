@@ -15,6 +15,13 @@
       <% end %>
     </div>
     <div class='row'>
+      <%= form.field_container :position do %>
+        <%= form.label :position %>
+        <%= form.number_field :position %>
+        <%= form.error_message_on :position %>
+      <% end %>
+    </div>
+    <div class='row'>
       <% if @flash_sale.image.present? %>
         <%= link_to image_tag(@flash_sale.image.attachment.url(:product), class: 'flash-sale-image'), @flash_sale.image.attachment.url(:original), target: "_blank" %>
       <% end %>
