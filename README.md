@@ -10,6 +10,8 @@ Adds "flash sale" functionality to Spree engine. Tested with Spree 4+.
 
 Check the specs for how it works.
 
+
+
 Installation
 ------------
 
