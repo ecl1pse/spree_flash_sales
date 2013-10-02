@@ -16,6 +16,7 @@
   <thead>
     <tr data-hook="admin_flash_sales_index_headers">
       <th><%= sort_link @search, :name, Spree.t(:flash_sale), {}, {:title => 'flash_sales_name'} %></th>
+      <th>Position</th>
       <th data-hook="admin_flash_sales_header_actions" class="actions"></th>
     </tr>
   </thead>
@@ -23,6 +24,11 @@
     <% @flash_sales.each do |flash_sale|%>
       <tr id="<%= spree_dom_id flash_sale %>" data-hook="admin_flash_sales_index_rows" class="<%= cycle('odd', 'even')%> flash-sale">
         <td class='flash_sale_name'><%=link_to flash_sale.name, edit_object_url(flash_sale) %></td>
+        <td class='flash_sale_position'>
+          <%= form_for [:admin, flash_sale], remote: true do |f| %>
+            <%= f.number_field :position %>
+          <% end%>
+        </td>
         <td data-hook="admin_flash_sales_index_row_actions" class="actions">
           <%= link_to_edit flash_sale, :no_text => true %>
           <%= link_to_delete flash_sale, :no_text => true %>
@@ -51,3 +57,12 @@
     <% end %>
   </div>
 <% end %>
+
+
+<script type='text/javascript'>
+  $(function() {
+    $(".edit_flash_sale input").change(function (){
+      $(this).closest("form").submit();
+    })
+  });
+</script>
