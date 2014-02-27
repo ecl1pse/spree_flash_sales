@@ -7,7 +7,7 @@ class Spree::FlashSale < ActiveRecord::Base
   validates :start_date, presence: true
   validates :saleable_id, presence: true
   validates :saleable_type, presence: true
-
+  serialize :product_sorting, Array
   # attr_accessible :active, :end_date, :name, :permalink, :start_date, :saleable_id, :saleable_type, :saleable_name, :attachment, :position
 
   attr_accessor :attachment

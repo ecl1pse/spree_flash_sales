@@ -5,13 +5,8 @@ class Spree::FlashSalesController < Spree::StoreController
 
   def show
     @flash_sale = Spree::FlashSale.find(params[:id])
-    products = @flash_sale.saleable.active_products
-    @flash_sale.saleable.descendants.each do |taxon|
-      products += taxon.active_products
-      products = products.uniq
-    end
-    @products = products
-
+    spree_flash_sales_load_products
+    @products = (@new_products + @products).uniq 
     respond_with(@flash_sale)
   end
 end

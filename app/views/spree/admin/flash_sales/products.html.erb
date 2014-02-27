@@ -1,0 +1,33 @@
+
+  <table>
+    <thead>
+      <tr>
+        <td>Position</td>
+        <td>Product Name</td>
+      </tr>
+    </thead>
+    <tbody id="sortable">
+      <% position_tr = 1 %>
+      
+      <% @new_products.each do |new_product| %>
+        <% sortable_id = "product_sorting_#{new_product.id.to_s}" %>
+          <tr class="product_list_new" id="<%= sortable_id.html_safe %>" style="background-color: yellow;cursor:pointer; ">
+            <td><%= position_tr %></td>
+            <td><%= new_product.name %></td>
+          </tr>
+        <% position_tr = position_tr + 1 %>
+      <% end %>
+
+      <% @products.each do |product| %>  
+        <% product_position = @product_sorting[product.id] if @product_sorting.present? %>
+          <% sortable_id = "product_sorting_#{product.id.to_s}" %>
+          <tr class="product_list" id=<%= sortable_id.html_safe %> style="cursor:pointer;">
+            <td><%= position_tr %></td>
+            <td><%= product.name %></td>
+          </tr>
+        <% position_tr = position_tr + 1 %>
+      <% end %>
+    
+    </tbody>
+  </table>
+

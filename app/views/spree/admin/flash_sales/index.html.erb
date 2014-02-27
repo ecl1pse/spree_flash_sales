@@ -29,6 +29,8 @@
             <%= f.number_field :position %>
           <% end%>
         </td>
+        <td><%= link_to "", products_admin_flash_sale_path(flash_sale), class: "icon_link with-tip handle no-text", style: "cursor : pointer;" %></td>
+
         <td data-hook="admin_flash_sales_index_row_actions" class="actions">
           <%= link_to_edit flash_sale, :no_text => true %>
           <%= link_to_delete flash_sale, :no_text => true %>

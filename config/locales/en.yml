@@ -8,6 +8,7 @@ en:
     flash_sale:
       saleable_hint: "Will this be a sale for an individual product or many based on a taxon?"
       saleable_name_hint: "Enter the name of product or taxon this sale will include."
+      submit: "Submit"
       link:
         new: "New Flash Sale"
       title:
