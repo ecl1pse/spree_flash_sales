@@ -7,6 +7,9 @@ Spree::Core::Engine.routes.draw do
       collection do
         get :saleables
       end
+      member do
+        match 'products', :via => [:get, :post]
+      end
     end
   end
 end

@@ -22,3 +22,29 @@ handle_datetime_picker_fields = function(){
 $(document).ready(function(){
   handle_datetime_picker_fields();
 });
+
+
+$(function() {
+  $( "tbody#sortable" ).sortable({
+    out: function() {
+      send_order($( "#sortable" ).sortable( "serialize", { key: "flash_sale[product_sorting][]"}));
+    }
+  });
+    $( "tbody#sortable" ).disableSelection();
+  });
+
+function send_order(value) {
+  $.ajax({
+            type: "POST",
+            url: "",
+            data: value, 
+            dataType: 'json', 
+            success: function(data) {
+            }
+    })
+    .fail(function() {
+            console.log( "error" );
+    });
+}
+
+

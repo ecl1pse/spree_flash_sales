@@ -1,38 +1,81 @@
-# encoding: UTF-8
+# -*- encoding: utf-8 -*-
+
 Gem::Specification.new do |s|
-  s.platform    = Gem::Platform::RUBY
-  s.name        = 'spree_flash_sales'
-  s.version     = '2.1.0'
-  s.summary     = 'Flash Sales for Spree'
-  s.description = 'Ability to create flash sales.'
-  s.required_ruby_version = '>= 1.9.3'
+  s.name = "spree_flash_sales"
+  s.version = "2.1.0"
 
-  s.author    = 'ec1lpse'
-  s.email     = 'ecl1pse.armageddon@gmail.com'
-  s.homepage  = 'https://github.com/ecl1pse/spree_flash_sales'
+  s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
+  s.authors = ["ec1lpse"]
+  s.date = "2014-02-21"
+  s.description = "Ability to create flash sales."
+  s.email = "ecl1pse.armageddon@gmail.com"
+  s.homepage = "https://github.com/ecl1pse/spree_flash_sales"
+  s.require_paths = ["lib"]
+  s.required_ruby_version = Gem::Requirement.new(">= 1.9.3")
+  s.requirements = ["none"]
+  s.rubygems_version = "1.8.23"
+  s.summary = "Flash Sales for Spree"
 
-  #s.files       = `git ls-files`.split("\n")
-  #s.test_files  = `git ls-files -- {test,spec,features}/*`.split("\n")
-  s.require_path = 'lib'
-  s.requirements << 'none'
+  if s.respond_to? :specification_version then
+    s.specification_version = 3
 
-  s.add_dependency 'spree_core', '~> 2.1.1'
-  s.add_dependency 'draper', '~> 1.2.1'
-
-  s.add_development_dependency 'capybara', '~> 2.1'
-  s.add_development_dependency 'coffee-rails'
-  s.add_development_dependency 'database_cleaner'
-  s.add_development_dependency 'factory_girl', '~> 4.2'
-  s.add_development_dependency 'ffaker'
-  s.add_development_dependency 'rspec-rails',  '~> 2.13'
-  s.add_development_dependency 'sass-rails'
-  s.add_development_dependency 'selenium-webdriver'
-  s.add_development_dependency 'simplecov'
-  s.add_development_dependency 'sqlite3'
-  s.add_development_dependency 'shoulda-matchers'
-  s.add_development_dependency 'guard'
-  s.add_development_dependency 'guard-rspec'
-  s.add_development_dependency 'rb-fsevent'
-  s.add_development_dependency 'launchy'
-  s.add_development_dependency 'guard-zeus'
+    if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
+      s.add_runtime_dependency(%q<spree_core>, ["~> 2.1.1"])
+      s.add_runtime_dependency(%q<draper>, ["~> 1.2.1"])
+      s.add_development_dependency(%q<capybara>, ["~> 2.1"])
+      s.add_development_dependency(%q<coffee-rails>, [">= 0"])
+      s.add_development_dependency(%q<database_cleaner>, [">= 0"])
+      s.add_development_dependency(%q<factory_girl>, ["~> 4.2"])
+      s.add_development_dependency(%q<ffaker>, [">= 0"])
+      s.add_development_dependency(%q<rspec-rails>, ["~> 2.13"])
+      s.add_development_dependency(%q<sass-rails>, [">= 0"])
+      s.add_development_dependency(%q<selenium-webdriver>, [">= 0"])
+      s.add_development_dependency(%q<simplecov>, [">= 0"])
+      s.add_development_dependency(%q<sqlite3>, [">= 0"])
+      s.add_development_dependency(%q<shoulda-matchers>, [">= 0"])
+      s.add_development_dependency(%q<guard>, [">= 0"])
+      s.add_development_dependency(%q<guard-rspec>, [">= 0"])
+      s.add_development_dependency(%q<rb-fsevent>, [">= 0"])
+      s.add_development_dependency(%q<launchy>, [">= 0"])
+      s.add_development_dependency(%q<guard-zeus>, [">= 0"])
+    else
+      s.add_dependency(%q<spree_core>, ["~> 2.1.1"])
+      s.add_dependency(%q<draper>, ["~> 1.2.1"])
+      s.add_dependency(%q<capybara>, ["~> 2.1"])
+      s.add_dependency(%q<coffee-rails>, [">= 0"])
+      s.add_dependency(%q<database_cleaner>, [">= 0"])
+      s.add_dependency(%q<factory_girl>, ["~> 4.2"])
+      s.add_dependency(%q<ffaker>, [">= 0"])
+      s.add_dependency(%q<rspec-rails>, ["~> 2.13"])
+      s.add_dependency(%q<sass-rails>, [">= 0"])
+      s.add_dependency(%q<selenium-webdriver>, [">= 0"])
+      s.add_dependency(%q<simplecov>, [">= 0"])
+      s.add_dependency(%q<sqlite3>, [">= 0"])
+      s.add_dependency(%q<shoulda-matchers>, [">= 0"])
+      s.add_dependency(%q<guard>, [">= 0"])
+      s.add_dependency(%q<guard-rspec>, [">= 0"])
+      s.add_dependency(%q<rb-fsevent>, [">= 0"])
+      s.add_dependency(%q<launchy>, [">= 0"])
+      s.add_dependency(%q<guard-zeus>, [">= 0"])
+    end
+  else
+    s.add_dependency(%q<spree_core>, ["~> 2.1.1"])
+    s.add_dependency(%q<draper>, ["~> 1.2.1"])
+    s.add_dependency(%q<capybara>, ["~> 2.1"])
+    s.add_dependency(%q<coffee-rails>, [">= 0"])
+    s.add_dependency(%q<database_cleaner>, [">= 0"])
+    s.add_dependency(%q<factory_girl>, ["~> 4.2"])
+    s.add_dependency(%q<ffaker>, [">= 0"])
+    s.add_dependency(%q<rspec-rails>, ["~> 2.13"])
+    s.add_dependency(%q<sass-rails>, [">= 0"])
+    s.add_dependency(%q<selenium-webdriver>, [">= 0"])
+    s.add_dependency(%q<simplecov>, [">= 0"])
+    s.add_dependency(%q<sqlite3>, [">= 0"])
+    s.add_dependency(%q<shoulda-matchers>, [">= 0"])
+    s.add_dependency(%q<guard>, [">= 0"])
+    s.add_dependency(%q<guard-rspec>, [">= 0"])
+    s.add_dependency(%q<rb-fsevent>, [">= 0"])
+    s.add_dependency(%q<launchy>, [">= 0"])
+    s.add_dependency(%q<guard-zeus>, [">= 0"])
+  end
 end

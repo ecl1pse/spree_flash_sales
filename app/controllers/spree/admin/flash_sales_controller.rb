@@ -10,7 +10,18 @@ class Spree::Admin::FlashSalesController < Spree::Admin::ResourceController
     render :json => search.result.map(&:name)
   end
 
+  def products
+    @search = Spree::FlashSale.ransack(params[:q])
+    if request.xhr?
+      @flash_sale.update_attributes(:product_sorting => params[:flash_sale][:product_sorting])
+      render :json => {:status => :success}, :status => 200
+      return
+    end
+    spree_flash_sales_load_products
+  end
+
   protected
+
     def location_after_save
       edit_object_url(@object)
     end
